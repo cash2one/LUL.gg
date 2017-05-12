@@ -6,7 +6,7 @@ let win;
 
 function createWindow(){
   // Create Browser Window
-  win = new BrowserWindow({width: 800, height: 600, icon:__dirname + '/img/icon.png'});
+  win = new BrowserWindow({width: 1000, height: 600, resizable: false,icon:__dirname + '/img/icon.png'});
 
   // Load index.html
   win.loadURL(url.format({
@@ -16,7 +16,7 @@ function createWindow(){
   }));
 
   // Open Devtool
-  win.webContents.openDevTools();
+  //win.webContents.openDevTools();
 
   win.on('closed', () =>{
     win = null;
