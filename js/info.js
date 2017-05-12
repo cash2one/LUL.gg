@@ -1,5 +1,9 @@
 var url = 'https://na.api.riotgames.com/api/lol/NA/v1.3/stats/by-summoner/39129642/ranked?season=SEASON2017&api_key=RGAPI-795e904f-77c3-4914-968d-16794eb87d4f';
 
+var summoner;
+var id;
+var key = 'RGAPI-795e904f-77c3-4914-968d-16794eb87d4f';
+
 function setup(){
 	loadJSON(url,gotData);
 }

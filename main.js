@@ -6,7 +6,8 @@ let win;
 
 function createWindow(){
   // Create Browser Window
-  win = new BrowserWindow({width: 1000, height: 600, resizable: false,icon:__dirname + '/img/icon.png'});
+  win = new BrowserWindow({width: 1000, height: 600, resizable: false, frame: false, icon:__dirname + '/img/icon.png'});
+  win.setMenu(null);
 
   // Load index.html
   win.loadURL(url.format({
