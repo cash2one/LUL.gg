@@ -1,7 +1,7 @@
 {
-  "name": "My_App",
+  "name": "LUL",
   "version": "1.0.0",
-  "description": "",
+  "description": "Fetch League of Legends in-game info using Riot Games' Api",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
