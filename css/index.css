@@ -8,6 +8,15 @@ body{
   display:inline-block;
 }
 
+#region-btn{
+  position:absolute;
+  background-color: #4AC2D5;
+  top: 60%;
+  left:25%;
+  height:7.7%;
+  width:5%
+}
+
 input{
   position:absolute;
   top: 60%;
