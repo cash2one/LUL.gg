@@ -26,3 +26,14 @@
      };
 
 })();
+
+var count = 0;;
+
+function navBar() {
+    if (count % 2 == 0){
+      document.getElementById("mySidenav").style.width = "250px";
+    } else{
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    count++;
+}
