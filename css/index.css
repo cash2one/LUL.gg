@@ -3,16 +3,27 @@ body{
   background-repeat: no-repeat;
 }
 
+#search{
+  list-style: none;
+  display:inline-block;
+}
+
 input{
   position:absolute;
-  border-style: solid;
-  border-color: #000;
-  border-width: 3px;
   top: 60%;
   right:30%;
   left:30%;
   height: 7%;
   width:40%
+}
+
+#go-btn{
+  position:absolute;
+  background-color: #4AC2D5;
+  top: 60%;
+  left:70%;
+  height:7.7%;
+  width:10%
 }
 
 footer{
