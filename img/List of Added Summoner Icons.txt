@@ -1,3 +1,4 @@
+http://leagueoflegends.wikia.com/wiki/Summoner_icon
 classic
 legendary
 ultimate
@@ -16,3 +17,8 @@ dark star
 dragonslayer
 cosmic
 pulsefire
+lunar revel
+ocean week
+valentine's day
+masquerade
+April Fool's Day

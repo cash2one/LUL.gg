@@ -10,7 +10,11 @@
 
           document.getElementById("max-btn").addEventListener("click", function (e) {
                var window = remote.getCurrentWindow()
-               window.maximize();
+               if (window.isMaximized()){
+                 window.unmaximize();
+              } else{
+                window.maximize();
+              }
           });
 
           document.getElementById("close-btn").addEventListener("click", function (e) {
