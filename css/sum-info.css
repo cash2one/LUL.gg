@@ -2,3 +2,44 @@ body{
   background-image: url("../img/index/background2.jpg");
   background-repeat: no-repeat;
 }
+
+#profile{
+  height: 90%;
+  width: 300px;
+  position:fixed;
+  background-color: #4AC2D5;
+  margin: 10px;
+}
+
+#profile-header{
+  list-style:none;
+  display:inline;
+}
+
+#summoner-icon{
+  float:left;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#summoner-name{
+  color:#FFF;
+}
+
+#ranked-stats{
+  color:#FFF;
+}
+
+#most-played{
+  list-style:none;
+  float:left;
+  margin:0;
+  padding:0;
+  height:inherit;
+  overflow-y:auto;
+}
+.most-played-champs{
+  width: 280px;
+  height: 100px;
+  display:block;
+}

@@ -10,7 +10,7 @@
     <script src="js/frame.js"></script>
   </head>
 
-  <body>
+  <body onload = "getSummonerInfo()">
     <div id="title-bar">
       <img id="menu-btn" src = "img/frame/menu.png" width = "24px" style="cursor:pointer" onclick="navBar()"/>
       <div id="title-bar-btns">
@@ -22,12 +22,33 @@
 
     <hr>
 
+    <div id = "profile">
+      <ul id = "profile-header">
+        <li><img id = "summoner-icon"/></li>
+        <li><h1 id = "summoner-name"></h1></li>
+        <p id = "ranked-stats">Rank W/L</p>
+      </ul>
+
+      <ul id = "most-played">
+        <li class = "most-played-champs" id = "champ0"></li>
+        <li class = "most-played-champs" id = "champ1"></li>
+        <li class = "most-played-champs" id = "champ2"></li>
+        <li class = "most-played-champs" id = "champ3"></li>
+        <li class = "most-played-champs" id = "champ4"></li>
+        <li class = "most-played-champs" id = "champ5"></li>
+        <li class = "most-played-champs" id = "champ6"></li>
+        <li class = "most-played-champs" id = "champ7"></li>
+        <li class = "most-played-champs" id = "champ8"></li>
+        <li class = "most-played-champs" id = "champ9"></li>
+      </ul>
+    </div>
+
     <div id="mySidenav" class="sidenav">
     <img id="menu-btn" src = "img/frame/menu.png" width = "24px" style="cursor:pointer" onclick="navBar()"/>
     <a href="index.html">Home</a>
     <a href="#">About</a>
     </div>
-    
+
     <footer>
       Copyright © 2017 Andus Yu
     </footer>
