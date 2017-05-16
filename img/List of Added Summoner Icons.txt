@@ -31,3 +31,4 @@ piltover
 zaun
 demacia
 ranked
+na/eu

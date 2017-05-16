@@ -70,9 +70,10 @@ function gotRankedStats(data){
 	var count = 0; //Get the last 10 elements in the Array
 	var index = played.length - 1;
 	while (count < 10){
-		if (played[index] != null && played[index] != 17){ //17 is undefined in riot api
+		if (played[index] != null && json.champions[played[index]].id != 0){ //id 0 is undefined in riot api
 			champion_list[count] = played[index]; // Array contains the index of the champions with the most fames apepar at
 			//games[count] = json.champions[played[index]].stats.totalSessionsPlayed; //games contains the amount of games corresponding to the champion index in champion_list
+			//document.write(played[index] + " ");
 			count ++;
 		}
 		index--;
