@@ -32,3 +32,11 @@ zaun
 demacia
 ranked
 na/eu
+kr
+GPL 2014/2015
+LMS 2016/2017
+LPL 2016/2017
+VCSA
+BR
+LAN/LAS
+JP
