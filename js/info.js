@@ -16,6 +16,7 @@ function getFormData(){
 function getSummonerInfo(){
 	summoner = localStorage.getItem(summoner); // Retreiving summoner name from localStorage
 	document.getElementById("summoner-name").innerHTML = summoner;// Writes out the summoner name
+	summoner = summoner.toLowerCase();
 	getBasicSummonerInfo(summoner); // Storing id and icon id into the variables
 
 	getRankedStats(id);
@@ -69,7 +70,7 @@ function gotRankedStats(data){
 
 	var count = 0; //Get the last 10 elements in the Array
 	var index = played.length - 1;
-	while (count < 10){
+	while (count < 5){
 		if (played[index] != null && json.champions[played[index]].id != 0){ //id 0 is undefined in riot api
 			champion_list[count] = played[index]; // Array contains the index of the champions with the most fames apepar at
 			//games[count] = json.champions[played[index]].stats.totalSessionsPlayed; //games contains the amount of games corresponding to the champion index in champion_list
@@ -85,11 +86,11 @@ function gotRankedStats(data){
 	} */
 
 	//Get the information from the top 10 most played champions
-	for (i = 0; i < 10; i++){
+	for (i = 0; i < 5; i++){
 		//win = json.champions[i].stats.totalSessionsWon;
 		//loss = json.champions[i].stats.totalSessionsLost;
-
 		champion = json.champions[champion_list[i]].id;
+		//document.write(champion_list[i]);
 
 		ratio = win/loss;
 
