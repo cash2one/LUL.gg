@@ -40,3 +40,24 @@ VCSA
 BR
 LAN/LAS
 JP
+TR
+RU
+OCE
+Worlds(Except 2013/2012 because of no icon id)
+All-Star
+MSI
+IWC
+Beta Test
+Vintage
+Team Builder
+Featured Game Mode
+Sugar Rush
+Summoner's Rift Visual Update
+Positive Play
+Poro Masters
+Dominion Retirement
+LAN_LAS Servers 3rd Anniversary
+Riot Games Inc. 10th Anniversary
+Hanami 2017
+Cosmonautics Day 2017
+Unused
