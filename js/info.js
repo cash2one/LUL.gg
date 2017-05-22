@@ -46,51 +46,30 @@ function getRankedStats(summoner_id){
 
 function gotRankedStats(data){
 	var json = JSON.parse(data);
-	var gamesplayed, win, loss, champion, ratio;
+	var gamesplayed, win, loss, champion, ratio, len;
 	var img;
-	var played = []
-	var champion_list = []
-	var games = [];
+	var games = []; //Number of games played which will be sorted
+	var indexOfChamp = []; //indexes corresponding to the number of games played
 
-	//Find the top 10 most played champions
-	//Method:
-	//			Traverse the array and hash the index. They key is the number of games played on the
-	//			champion. Collisions will be hashed into the next available index. Array will then be sorted.
+	//Traverse the array and store the number of games played into an Array
+	//Store the array index that the number of games played appears at in the respective array
 	for (i = 0; i < json.champions.length; i++){
 		gamesplayed = json.champions[i].stats.totalSessionsPlayed;
-		if (played[gamesplayed] == null){
-			played[gamesplayed] = i;
-		} /*else {
-			while (played[gamesplayed] != null){
-				gamesplayed++;
-			}
-			played[gamesplayed] = i;
-		}*/
+		games[i] = gamesplayed;
+		indexOfChamp[i] = i;
 	}
 
-	var count = 0; //Get the last 10 elements in the Array
-	var index = played.length - 1;
-	while (count < 5){
-		if (played[index] != null && json.champions[played[index]].id != 0){ //id 0 is undefined in riot api
-			champion_list[count] = played[index]; // Array contains the index of the champions with the most fames apepar at
-			//games[count] = json.champions[played[index]].stats.totalSessionsPlayed; //games contains the amount of games corresponding to the champion index in champion_list
-			//document.write(played[index] + " ");
-			count ++;
-		}
-		index--;
-	}
-	/*
-	//Sort list of champions by games played
-	for (){
+	//Sort the number of games played per champion in ascending order
+	//Ignore final index because it is used for total games from ALL Champions
+	insertionSort(indexOfChamp, games);
 
-	} */
+	len = indexOfChamp.length; //Get length of the array
 
 	//Get the information from the top 10 most played champions
-	for (i = 0; i < 5; i++){
+	for (i = 0; i < 10; i++){
 		//win = json.champions[i].stats.totalSessionsWon;
 		//loss = json.champions[i].stats.totalSessionsLost;
-		champion = json.champions[champion_list[i]].id;
-		//document.write(champion_list[i]);
+		champion = json.champions[indexOfChamp[len - 2 - i]].id; //Get champion index starting from second last array element (Most played champion)
 
 		ratio = win/loss;
 
@@ -100,6 +79,7 @@ function gotRankedStats(data){
 		img = "champ" + i;
 		document.getElementById(img).style.backgroundImage = "url('img/Champion_Splash/Champion_Heads/"+ championName +"_Splash_0.jpg')";
 	}
+
 }
 
 //Collect champion info
@@ -128,3 +108,36 @@ function loadJSON(url, callback) {
     };
     xobj.send(null);
  }
+
+///////////////////////////////////////////////
+/// Insertion sort For Most Played Champion///
+/////////////////////////////////////////////
+/*
+	*Quick sort caused Maximum call stack size exceeded
+*/
+function insertionSort(idx, items) {
+    var len = items.length;     // number of items in the array
+    var value, i, j, index;
+
+    for (i=1; i < len; i++) {
+        // store the current value because it may shift later
+        value = items[i];
+				index = idx[i];
+
+        /*
+         * Whenever the value in the sorted section is greater than the value
+         * in the unsorted section, shift all items in the sorted section over
+         * by one. This creates space in which to insert the value.
+         */
+
+        for (j=i-1; j > -1 && items[j] > value; j--) {
+            items[j+1] = items[j];
+						idx[j+1] = idx[j]; //Swap the indexes when swapping the elements
+        }
+
+        items[j+1] = value;
+				idx[j+1] = index;
+    }
+
+    return items;
+}
