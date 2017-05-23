@@ -25,15 +25,15 @@ function getSummonerInfo(){
 
 // Function that fetches profile id and icon id
 function getBasicSummonerInfo(summoner_name){
-	var basicInfoURL = "https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/" +summoner_name+"?api_key=" + key;
+	var basicInfoURL = "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" +summoner_name+"?api_key=" + key;
 	loadJSON(basicInfoURL, gotBasicSumData);
 }
 
 function gotBasicSumData(data){
   var json = JSON.parse(data);
 	//Saves the retrieved basic info into the variables
-	id = json[summoner].id;
-	icon = json[summoner].profileIconId;
+	id = json.id;
+	icon = json.profileIconId;
 
 	//Loads the summoner icon
 	document.getElementById("summoner-icon").src = "img/summoner_icons/ProfileIcon" + icon + ".png";
@@ -41,13 +41,39 @@ function gotBasicSumData(data){
 
 //Collects data for ranked stats
 function getRankedStats(summoner_id){
-	var rankedStatsURL = "https://na.api.riotgames.com/api/lol/NA/v1.3/stats/by-summoner/" + summoner_id + "/ranked?season=SEASON2017&api_key=" + key;
+	var rankedStatsURL;
+	//Load Rank
+	rankedStatsURL = "https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/"+ summoner_id + "?api_key=" + key;
+	loadJSON(rankedStatsURL, gotRank);
+	//Load Ranked Champion Info
+	rankedStatsURL = "https://na.api.riotgames.com/api/lol/NA/v1.3/stats/by-summoner/" + summoner_id + "/ranked?season=SEASON2017&api_key=" + key;
 	loadJSON(rankedStatsURL, gotRankedStats);
+}
+
+function gotRank(data){
+	var json = JSON.parse(data);
+	var wins, losses, tier, rank, lp, league, wlRatio;
+
+	//Load Rank Data
+	//json.[0] because we want ranked solo not ranked flex
+	wins = json[0].wins;
+	losses = json[0].losses;
+	tier = json[0].tier;
+	rank = json[0].rank;
+	lp = json[0].leaguePoints;
+	league = json[0].leagueName;
+
+	//Calculate win/Loss ratio and round
+	wlRatio = Math.round(wins/(wins+losses)*100);
+
+	document.getElementById("ranked-icon").src = "img/ranks/" + tier + ".png";
+	document.getElementById("ranked-stats").innerHTML = tier + " " + rank + "<br />" + lp + " LP / " + wins + "W " + losses + "L<br />Win Ratio " + wlRatio + "%<br />" + league;
 }
 
 function gotRankedStats(data){
 	var json = JSON.parse(data);
-	var gamesplayed, win, loss, championID, championName, ratio, len;
+	var gamesplayed, win, loss, championID, championName, ratio, len, total;
+	var kills, assists, deaths, kda;
 	var img;
 	var games = []; //Number of games played which will be sorted
 
@@ -67,15 +93,39 @@ function gotRankedStats(data){
 
 	//Get the information from the top 10 most played champions
 	for (i = 0; i < 10; i++){
-		//win = json.champions[i].stats.totalSessionsWon;
-		//loss = json.champions[i].stats.totalSessionsLost;
 		championID = json.champions[indexOfChamp[len - 2 - i]].id; //Get champion index starting from second last array element (Most played champion)
-		
-		championName = ChIDToName(championID)
-		ratio = win/loss;
-
+		championName = ChIDToName(championID);
+		//Loading the image of the champion into the side profile
 		img = "champ" + i;
 		document.getElementById(img).style.backgroundImage = "url('img/Champion_Splash/Champion_Heads/"+ championName +"_Splash_0.jpg')";
+
+		//Wins/Losses per champion
+		win = json.champions[indexOfChamp[len - 2 - i]].stats.totalSessionsWon;
+		loss = json.champions[indexOfChamp[len - 2 - i]].stats.totalSessionsLost;
+		total  = win + loss;
+
+		ratio = Math.round((win/total)*100);
+
+		//Kills/Assists/Deaths per champion
+		kills = json.champions[indexOfChamp[len - 2 - i]].stats.totalChampionKills;
+		deaths = json.champions[indexOfChamp[len - 2 - i]].stats.totalDeathsPerSession;
+		assists = json.champions[indexOfChamp[len - 2 - i]].stats.totalAssists;
+
+		kda = (kills + assists) / deaths;
+		kda = Math.round(kda * 100) / 100; //Round to 2 decimal places
+
+		//Average kills/assists/deaths per session
+		kills /= total;
+		deaths /= total;
+		assists /= total;
+
+		//Round the kills/deaths/assists to 1 decimal
+		kills = Math.round(kills * 10) / 10;
+		deaths = Math.round(deaths * 10) / 10;
+		assists = Math.round(assists * 10) / 10;
+
+		document.getElementById(img).innerHTML = kills + "/" + deaths + "/" + assists + "   " +  kda + " KDA <br />" + "Total Games: " + total + "<br />Wins: " + win + "<br />Loss: " + loss + "<br />W/L:" + ratio + "%";
+
 	}
 
 }
