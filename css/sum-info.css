@@ -4,11 +4,12 @@ body{
 }
 
 #profile{
-  height: 80%;
   width: 280px;
+  height:80%;
   position:fixed;
   background-color: #4AC2D5;
   font-size: 0;
+  float:left;
 }
 
 #summoner-icon{

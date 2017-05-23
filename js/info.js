@@ -124,7 +124,7 @@ function gotRankedStats(data){
 		deaths = Math.round(deaths * 10) / 10;
 		assists = Math.round(assists * 10) / 10;
 
-		document.getElementById(img).innerHTML = kills + "/" + deaths + "/" + assists + "   " +  kda + " KDA <br />" + "Total Games: " + total + "<br />Wins: " + win + "<br />Loss: " + loss + "<br />W/L:" + ratio + "%";
+		document.getElementById(img).innerHTML = kills + "/" + deaths + "/" + assists + "   " +  kda + " KDA <br />" + "Total Games: " + total + "<br />Wins: " + win + "<br />Losses: " + loss + "<br />W/L:" + ratio + "%";
 
 	}
 
