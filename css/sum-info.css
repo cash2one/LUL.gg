@@ -57,3 +57,24 @@ body{
   display:block;
   font-size: 15px;
 }
+
+#tabs{
+  padding-left: 300px;
+  list-style: none;
+  font-size: 0;
+}
+
+#tabs li{
+  display: inline-block;
+  cursor: pointer;
+  background-color: #FFF;
+  font-size: 20px;
+  border-style: solid;
+  border-color: #000;
+  border-width: 5px;
+  border-left: none;
+}
+
+#tabs li:first-child{
+  border-left: solid 5px #000;
+}
