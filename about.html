@@ -1,18 +1,17 @@
 <!DOCTYPE html>
+
 <html>
   <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/frame.css">
+    <link rel="stylesheet" href="css/about.css">
+
     <script src="js/jquery.js"></script>
-    <script src="js/info.js"></script>
     <script src="js/frame.js"></script>
   </head>
 
   <body>
     <div id="title-bar">
-        <img id="menu-btn" src = "img/frame/menu.png" width = "24px" style="cursor:pointer" onclick="navBar()"/>
+      <img id="menu-btn" src = "img/frame/menu.png" width = "24px" style="cursor:pointer" onclick="navBar()"/>
       <div id="title-bar-btns">
            <img id="min-btn" src = "img/frame/min.png" width = "24px" style="cursor:pointer"/>
            <img id="max-btn" src = "img/frame/max.png" width = "24px" style="cursor:pointer"/>
@@ -28,27 +27,9 @@
     <a href="about.html">About</a>
     </div>
 
-    <ul id = "search">
-      <li>
-        <img id = "region-btn" src = "img/index/region.png" style= "cursor:pointer"/>
-      </li>
-      <li>
-        <form id = "summoner_Search">
-          <input type="text" name = "summoner_Name" >
-        <form>
-      </li>
-      <li>
-            <img id="go-btn" src = "img/index/submit.png" style="cursor:pointer" onclick = "getFormData()"/>
-      </li>
-    </ul>
-
-
     <footer>
       Copyright © 2017 Andus Yu
     </footer>
   </body>
 
-  <script>
-    require('./renderer.js');
-  </script>
 </html>
