@@ -17,7 +17,7 @@ function createWindow(){
   }));
 
   // Open Devtool
-  //win.webContents.openDevTools();
+  win.webContents.openDevTools();
 
   win.on('closed', () =>{
     win = null;

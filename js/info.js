@@ -21,6 +21,7 @@ function getSummonerInfo(){
 	getBasicSummonerInfo(summoner); // Storing id and icon id into the variables
 
 	getRankedStats(id);
+	getRecentGames(id);
 }
 
 // Function that fetches profile id and icon id
@@ -127,7 +128,15 @@ function gotRankedStats(data){
 		document.getElementById(img).innerHTML = kills + "/" + deaths + "/" + assists + "   " +  kda + " KDA <br />" + "Total Games: " + total + "<br />Wins: " + win + "<br />Losses: " + loss + "<br />W/L:" + ratio + "%";
 
 	}
+}
 
+function getRecentGames(summoner_id){
+	var recentGameURL = "https://na.api.riotgames.com/api/lol/NA/v1.3/game/by-summoner/" + summoner_id + "/recent?api_key=" + key;
+	loadJSON(recentGameURL, gotRecentGames);
+}
+
+function gotRecentGames(data){
+	var json = JSON.parse(data);
 }
 
 // Fetches data from the api given the link
