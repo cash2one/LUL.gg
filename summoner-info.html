@@ -55,12 +55,29 @@
     </div>
     <div id = "info">
       <ul id = "tabs">
-        <li>Match History</li>
-        <li>Runes</li>
-        <li>Masteries</li>
-        <li>Live Game</li>
+        <li onclick = "openTab(event, 'match-history')">Match History</li>
+        <li onclick = "openTab(event, 'runes')">Runes</li>
+        <li onclick = "openTab(event, 'masteries')">Masteries</li>
+        <li onclick = "openTab(event, 'live-game')">Live Game</li>
       </ul>
     </div>
+
+    <div id = "match-history" class = "tabcontent">
+      <h1>Match History</h1>
+    </div>
+
+    <div id = "runes" class = "tabcontent">
+      <h1>Runes</h1>
+    </div>
+
+    <div id = "masteries" class = "tabcontent">
+      <h1>Masteries</h1>
+    </div>
+
+    <div id = "live-game" class = "tabcontent">
+      <h1>Live Game</h1>
+    </div>
+
 
     <footer>
       Copyright © 2017 Andus Yu

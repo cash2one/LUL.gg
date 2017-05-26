@@ -78,3 +78,13 @@ body{
 #tabs li:first-child{
   border-left: solid 5px #000;
 }
+
+.tabcontent {
+  padding-left: 300px;
+  color: #FFF;
+  display: none;
+}
+
+#match-history{
+  display:block;
+}
