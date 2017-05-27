@@ -137,6 +137,22 @@ function getRecentGames(summoner_id){
 
 function gotRecentGames(data){
 	var json = JSON.parse(data);
+	var list = document.getElementById("history");
+	var li;
+
+	for (i = 0; i < 1; i++){
+		//Adding a list element
+		li = document.createElement("li");
+		li.appendChild(document.createTextNode(i));
+		list.appendChild(li);
+		li.setAttribute("id", "game" + i);
+
+		if (json.games[i].stats.win){ //If the user won this game
+			document.getElementById("game" + i).style.backgroundColor = "#7AFF8C";
+		} else { // User lost the game
+			document.getElementById("game" + i).style.backgroundColor= "#F97272";
+		}
+	}
 }
 
 // Fetches data from the api given the link
@@ -165,15 +181,8 @@ function openTab(evt, tabName) {
          tabcontent[i].style.display = "none";
      }
 
-     // Get all elements with class="tablinks" and remove the class "active"
-     /*tablinks = document.getElementsByClassName("tablinks");
-     for (i = 0; i < tablinks.length; i++) {
-         tablinks[i].className = tablinks[i].className.replace(" active", "");
-     }*/
-
      // Show the current tab, and add an "active" class to the button that opened the tab
      document.getElementById(tabName).style.display = "block";
-     //evt.currentTarget.className += " active";
  }
 
 
