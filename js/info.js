@@ -139,11 +139,15 @@ function gotRecentGames(data){
 	var json = JSON.parse(data);
 	var list = document.getElementById("history");
 	var li;
+	var time_played;
+	var player_Kills, player_Death, player_Assist, player_Champion, player_CS, player_MultiKill;
+	var team_Kills, team_Death, teamAssist, team_Gold;
+	var enemy_Kills;
 
-	for (i = 0; i < 1; i++){
+	for (i = 0; i < json.games.length; i++){
 		//Adding a list element
 		li = document.createElement("li");
-		li.appendChild(document.createTextNode(i));
+		li.appendChild(document.createTextNode(json.games[i].subType));
 		list.appendChild(li);
 		li.setAttribute("id", "game" + i);
 
