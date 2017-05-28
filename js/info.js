@@ -138,16 +138,27 @@ function getRecentGames(summoner_id){
 function gotRecentGames(data){
 	var json = JSON.parse(data);
 	var list = document.getElementById("history");
-	var li;
-	var time_played;
-	var player_Kills, player_Death, player_Assist, player_Champion, player_CS, player_MultiKill;
-	var team_Kills, team_Death, teamAssist, team_Gold;
-	var enemy_Kills;
+	var li, img, src, p;
+	var gametype;
+	var playerChampion;
 
 	for (i = 0; i < json.games.length; i++){
+		gametype = json.games[i].subType;
+
+		if (gametype == "RANKED_SOLO_5x5"){
+			gametype = "Ranked Solo";
+		} else if (gametype == "RANKED_FLEX_SR"){
+			gametype = "Ranked Flex";
+		} else if (gametype == "ARAM_UNRANKED_5x5"){
+			gametype = "ARAM";
+		} else if (gametype == "NORMAL"){
+			gametype = "Normal";
+		} else {
+			gametype = "Special";
+		}
+
 		//Adding a list element
 		li = document.createElement("li");
-		li.appendChild(document.createTextNode(json.games[i].subType));
 		list.appendChild(li);
 		li.setAttribute("id", "game" + i);
 
@@ -156,7 +167,30 @@ function gotRecentGames(data){
 		} else { // User lost the game
 			document.getElementById("game" + i).style.backgroundColor= "#F97272";
 		}
+
+		//Adding a p tag for the game type
+		p = document.createElement("p");
+		src = document.getElementById("game" + i);
+		src.appendChild(p);
+		p.innerHTML = gametype;
+
+		//Get the champion that the player played
+		playerChampion = json.games[i].championId;
+		playerChampion = ChIDToName(playerChampion);
+
+		//Add the champion image to the li element
+		img = document.createElement("img");
+		img.src = "img/Champion_Splash/Champion_Icon/" + playerChampion + "_Square_0.png";
+		src = document.getElementById("game" + i);
+		src.appendChild(img);
 	}
+
+	//Adding a list element
+	li = document.createElement("li");
+	li.appendChild(document.createTextNode("View More"));
+	list.appendChild(li);
+	li.setAttribute("id", "view-more");
+
 }
 
 // Fetches data from the api given the link

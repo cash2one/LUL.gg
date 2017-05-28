@@ -100,4 +100,19 @@ body{
   height: 150px;
   width: 825px;
   color: #000;
+  display: block;
+  float: left;
+}
+
+#view-more{
+  height: 150px;
+  width: 825px;
+  text-align: center;
+  color: #000;
+  background-color: #FFF;
+}
+
+#history li img {
+  width: 90px;
+  padding-left: 10px;
 }
