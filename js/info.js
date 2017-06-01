@@ -365,7 +365,7 @@ function ChIDToName(id){
     case 61: return "Orianna"; break;
     case 114: return "Fiora"; break;
     case 9: return "Fiddlesticks"; break;
-    case 31: return "Cho'Gath"; break;
+    case 31: return "ChoGath"; break;
     case 33: return "Rammus"; break;
     case 7: return "LeBlanc"; break;
     case 16: return "Soraka"; break;
