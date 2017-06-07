@@ -1,3 +1,25 @@
 body{
   background-color: #000;
 }
+
+#des{
+  padding-top: 100px;
+}
+
+body p{
+  color: #FFF;
+  text-align: center;
+}
+
+body p a{
+  color: #FFF;
+  text-decoration: none;
+}
+
+#links{
+  padding-top: 100px;
+}
+
+footer{
+  color: #FFF;
+}
