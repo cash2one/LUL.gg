@@ -103,6 +103,12 @@ body{
   color: #000;
   display: block;
   float: left;
+  border: 3px #333 solid;
+  border-top: none;
+}
+
+#history li:first-child{
+  border-top: 3px #333 solid;
 }
 
 #view-more{

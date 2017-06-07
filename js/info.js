@@ -141,6 +141,8 @@ function gotRecentGames(data){
 	var li, img, src, p;
 	var gametype;
 	var playerChampion;
+	var kills, assists, deaths, kda;
+	var x;
 
 	for (i = 0; i < json.games.length; i++){
 		gametype = json.games[i].subType;
@@ -183,6 +185,26 @@ function gotRecentGames(data){
 		img.src = "img/Champion_Splash/Champion_Icon/" + playerChampion + "_Square_0.png";
 		src = document.getElementById("game" + i);
 		src.appendChild(img);
+
+		deaths = json.games[i].stats.numDeaths;
+		kills = json.games[i].stats.championsKilled;
+		assists = json.games[i].stats.assists;
+		kda = (Math.round((kills + assists)/deaths * 100))/100;
+
+		//Adding a p tag for the player score
+		p = document.createElement("p");
+		src = document.getElementById("game" + i);
+		p.setAttribute("id", "kda" + i);
+		src.appendChild(p);
+		p.innerHTML = kills + " / " + deaths + " / " + assists + "<br/>KDA: " + kda;
+
+		//Changing the style of the p tag
+		x = document.getElementById("kda" + i);
+		x.style.color = "#000"
+		x.style.position = "absolute"
+		x.style.left = "500px";
+		x.style.display = "inline-block"
+		x.style.fontSize = "20px";
 	}
 
 	//Adding a list element
