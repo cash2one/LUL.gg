@@ -186,10 +186,17 @@ function gotRecentGames(data){
 		src = document.getElementById("game" + i);
 		src.appendChild(img);
 
-		deaths = json.games[i].stats.numDeaths;
-		kills = json.games[i].stats.championsKilled;
-		assists = json.games[i].stats.assists;
-		kda = (Math.round((kills + assists)/deaths * 100))/100;
+    //Find the kda of the player for that game
+		deaths = checkUndefined(json.games[i].stats.numDeaths);
+		kills = checkUndefined(json.games[i].stats.championsKilled);
+		assists = checkUndefined(json.games[i].stats.assists);
+
+    //Checks fo undefined kda (number of deaths = 0)
+    if (deaths == 0){
+      kda = "Perfect";
+    } else {
+		  kda = (Math.round((kills + assists)/deaths * 100))/100;
+    }
 
 		//Adding a p tag for the player score
 		p = document.createElement("p");
@@ -213,6 +220,14 @@ function gotRecentGames(data){
 	list.appendChild(li);
 	li.setAttribute("id", "view-more");
 
+}
+
+//Checks for null variables and returns a 0
+function checkUndefined(varToCheck){
+  if (varToCheck == null){
+    return 0;
+  }
+  return varToCheck;
 }
 
 // Fetches data from the api given the link
