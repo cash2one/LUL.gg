@@ -435,3 +435,39 @@ function ChIDToName(id){
 		case 498: return "Xayah"; break;
     }
 }
+
+//Converts the given id to a string with the summoner spell name
+function IDToSS(id){
+	//Commented cases do not exist anymore
+	switch(id){
+	case 1: return "Clarity"; break;
+	//case 2: return "Garrison"; break;
+	case 3: return "Ghost"; break;
+	case 4: return "Heal"; break;
+	//case 5: return "Revive"; break;
+	case 6: return "Cleanse"; break;
+	case 7: return "Teleport"; break;
+	case 8: return "Smite"; break;
+	case 9: return "Barrier"; break;
+	case 10: return "Exhaust"; break;
+	case 11: return "Ignite"; break;
+	//case 12: return "Clairvoyance"; break;
+	case 13: return "Flash"; break;
+	case 17: return "Mark"; break;
+	}
+}
+
+//Converts the given id to a string with the summoner spell name
+function IDToKeyStone(id){
+	switch(id){
+		case 45: return "CourageOfTheColossus"; break;
+		case 35: return "DeathfireTouch"; break;
+		case 34: return "FervorOfBattle"; break;
+		case 39: return "GraspOfTheUndying"; break;
+		case 41: return "StonebornPact"; break;
+		case 36: return "Stormraider'sSurge"; break;
+		case 37: return "Thunderlord'sDecree"; break;
+		case 33: return "Warlord'sBloodlust"; break;
+		case 38: return "Windspeaker'sBlessing"; break;
+	}
+}
