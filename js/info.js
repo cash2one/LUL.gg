@@ -138,11 +138,14 @@ function getRecentGames(summoner_id){
 function gotRecentGames(data){
 	var json = JSON.parse(data);
 	var list = document.getElementById("history");
-	var li, img, src, p;
+	var li, img, src, p, ul;
 	var gametype;
 	var playerChampion;
 	var kills, assists, deaths, kda;
 	var x;
+	var ss = [];
+	var item = [];
+	var keystone;
 
 	for (i = 0; i < json.games.length; i++){
 		gametype = json.games[i].subType;
@@ -186,12 +189,59 @@ function gotRecentGames(data){
 		src = document.getElementById("game" + i);
 		src.appendChild(img);
 
-    //Find the kda of the player for that game
+		//Get the summoner spells
+		ss[0] = json.games[i].spell1;
+		ss[0] = idToSS(ss[0]) ; //Convert from int to string
+		ss[1] = json.games[i].spell2;
+		ss[1] = idToSS(ss[1]) ; //Convert from int to string
+
+		//Create img for summoner spells
+		for (j = 0; j < 2; j++){
+			img = document.createElement("img");
+			img.src = "img/summoner_spells/"+ ss[j] +".png";
+			img.setAttribute("id", "ss" + i + "" + j);
+			src = document.getElementById("game" + i);
+			src.appendChild(img);
+
+			x = document.getElementById("ss" + i +""+ j);
+			x.style.width = "40px";
+		}
+
+		//Changing style of summoner spells
+		x = document.getElementById("ss" + i +""+ 0);
+		x.style.position = "relative";
+		x.style.left = "0px";
+		x.style.bottom = "50px";
+
+		y = document.getElementById("ss" + i +""+ 1);
+		y.style.position = "relative"
+		y.style.right = "50px";
+
+		/*
+
+		API does not contain info for keystone
+
+		//Adding keystone image
+		img = document.createElement("img");
+		img.src = "img/keystones/FervorOfBattle.png";
+		img.setAttribute("id", "keystone" + i);
+		src = document.getElementById("game" + i);
+		src.appendChild(img);
+
+		//Changins style of keystone
+		x = document.getElementById("keystone" + i);
+		x.style.position = "relative";
+		x.style.right = "50px";
+		x.style.bottom = "25px";
+		x.style.width = "40px";
+		*/
+
+		//Find the kda of the player for that game
 		deaths = checkUndefined(json.games[i].stats.numDeaths);
 		kills = checkUndefined(json.games[i].stats.championsKilled);
 		assists = checkUndefined(json.games[i].stats.assists);
 
-    //Checks fo undefined kda (number of deaths = 0)
+    //Checks for undefined kda (number of deaths = 0)
     if (deaths == 0){
       kda = "Perfect";
     } else {
@@ -208,8 +258,9 @@ function gotRecentGames(data){
 		//Changing the style of the p tag
 		x = document.getElementById("kda" + i);
 		x.style.color = "#000"
-		x.style.position = "absolute"
-		x.style.left = "500px";
+		x.style.position = "relative"
+		x.style.right = "30px";
+		x.style.bottom = "25px";
 		x.style.display = "inline-block"
 		x.style.fontSize = "20px";
 	}
@@ -437,28 +488,25 @@ function ChIDToName(id){
 }
 
 //Converts the given id to a string with the summoner spell name
-function IDToSS(id){
+function idToSS(id){
 	//Commented cases do not exist anymore
 	switch(id){
-	case 1: return "Clarity"; break;
-	//case 2: return "Garrison"; break;
-	case 3: return "Ghost"; break;
-	case 4: return "Heal"; break;
-	//case 5: return "Revive"; break;
-	case 6: return "Cleanse"; break;
-	case 7: return "Teleport"; break;
-	case 8: return "Smite"; break;
-	case 9: return "Barrier"; break;
-	case 10: return "Exhaust"; break;
-	case 11: return "Ignite"; break;
-	//case 12: return "Clairvoyance"; break;
-	case 13: return "Flash"; break;
-	case 17: return "Mark"; break;
+		case 13: return "Clarity"; break;
+		case 6: return "Ghost"; break;
+		case 7: return "Heal"; break;
+		case 1: return "Cleanse"; break;
+		case 12: return "Teleport"; break;
+		case 11: return "Smite"; break;
+		case 21: return "Barrier"; break;
+		case 3: return "Exhaust"; break;
+		case 14: return "Ignite"; break;
+		case 4: return "Flash"; break;
+		case 32: return "Mark"; break;
 	}
 }
 
-//Converts the given id to a string with the summoner spell name
-function IDToKeyStone(id){
+//Converts the given id to a string with the Keystone name
+function idToKeyStone(id){
 	switch(id){
 		case 45: return "CourageOfTheColossus"; break;
 		case 35: return "DeathfireTouch"; break;

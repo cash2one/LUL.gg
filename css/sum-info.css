@@ -72,12 +72,12 @@ body{
   font-size: 20px;
   border-style: solid;
   border-color: #000;
-  border-width: 5px;
+  border-width: 2px;
   border-left: none;
 }
 
 #tabs li:first-child{
-  border-left: solid 5px #000;
+  border-left: solid 2px #000;
 }
 
 .tabcontent {
