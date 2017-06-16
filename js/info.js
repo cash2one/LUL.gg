@@ -179,6 +179,7 @@ function gotRecentGames(data){
 		src = document.getElementById("game" + i);
 		src.appendChild(p);
 		p.innerHTML = gametype;
+		p.style.padding = "0 0 0 20px";
 
 		//Get the champion that the player played
 		playerChampion = json.games[i].championId;
@@ -252,18 +253,16 @@ function gotRecentGames(data){
 		//Adding a p tag for the player score
 		p = document.createElement("p");
 		src = document.getElementById("game" + i);
-		p.setAttribute("id", "kda" + i);
 		src.appendChild(p);
 		p.innerHTML = kills + " / " + deaths + " / " + assists + "<br/>KDA: " + kda;
 
 		//Changing the style of the p tag
-		x = document.getElementById("kda" + i);
-		x.style.color = "#000"
-		x.style.position = "relative"
-		x.style.right = "30px";
-		x.style.bottom = "25px";
-		x.style.display = "inline-block"
-		x.style.fontSize = "20px";
+		p.style.color = "#000"
+		p.style.position = "relative"
+		p.style.right = "30px";
+		p.style.bottom = "25px";
+		p.style.display = "inline-block"
+		p.style.fontSize = "20px";
 
 		//Get the win and time information
 		win = json.games[i].stats.win;
@@ -276,7 +275,6 @@ function gotRecentGames(data){
 		//Adding a p tag for win and time info
 		p = document.createElement("p");
 		src = document.getElementById("game" + i);
-		p.setAttribute("id", "result" + i);
 		src.appendChild(p);
 
 		if (win){
@@ -286,12 +284,10 @@ function gotRecentGames(data){
 		}
 
 		//Changing the style of the p tag
-		x = document.getElementById("result" + i);
-		x.style.color = "#000"
-		x.style.position = "relative"
-		x.style.bottom = "25px";
-		x.style.display = "inline-block"
-		x.style.fontSize = "20px";
+		p.style.position = "relative"
+		p.style.bottom = "25px";
+		p.style.display = "inline-block"
+		p.style.fontSize = "20px";
 
 	}
 
