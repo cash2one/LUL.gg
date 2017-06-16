@@ -146,6 +146,7 @@ function gotRecentGames(data){
 	var ss = [];
 	var item = [];
 	var keystone;
+	var win, time, min, sec;
 
 	for (i = 0; i < json.games.length; i++){
 		gametype = json.games[i].subType;
@@ -263,6 +264,35 @@ function gotRecentGames(data){
 		x.style.bottom = "25px";
 		x.style.display = "inline-block"
 		x.style.fontSize = "20px";
+
+		//Get the win and time information
+		win = json.games[i].stats.win;
+		time = json.games[i].stats.timePlayed;
+
+		//Calculate the minutes and seconds
+		min = Math.floor(time/60);
+		sec = time%60;
+
+		//Adding a p tag for win and time info
+		p = document.createElement("p");
+		src = document.getElementById("game" + i);
+		p.setAttribute("id", "result" + i);
+		src.appendChild(p);
+
+		if (win){
+			p.innerHTML = "Victory <br/>" + min + "m" + " " + sec + "s";
+		} else {
+			p.innerHTML = "Defeat <br/>" + min + "m" + " " + sec + "s";
+		}
+
+		//Changing the style of the p tag
+		x = document.getElementById("result" + i);
+		x.style.color = "#000"
+		x.style.position = "relative"
+		x.style.bottom = "25px";
+		x.style.display = "inline-block"
+		x.style.fontSize = "20px";
+
 	}
 
 	//Adding a list element
@@ -270,7 +300,6 @@ function gotRecentGames(data){
 	li.appendChild(document.createTextNode("View More"));
 	list.appendChild(li);
 	li.setAttribute("id", "view-more");
-
 }
 
 //Checks for null variables and returns a 0
