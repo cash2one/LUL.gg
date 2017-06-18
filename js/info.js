@@ -205,8 +205,7 @@ function gotRecentGames(data){
 			src = document.getElementById("game" + i);
 			src.appendChild(img);
 
-			x = document.getElementById("ss" + i +""+ j);
-			x.style.width = "40px";
+			img.style.width = "40px";
 		}
 
 		//Changing style of summoner spells
@@ -288,6 +287,49 @@ function gotRecentGames(data){
 		p.style.bottom = "25px";
 		p.style.display = "inline-block"
 		p.style.fontSize = "20px";
+
+		//Get the items
+		item[0] = json.games[i].stats.item0;
+		item[1] = json.games[i].stats.item1;
+		item[2] = json.games[i].stats.item2;
+		item[3] = json.games[i].stats.item3;
+		item[4] = json.games[i].stats.item4;
+		item[5] = json.games[i].stats.item5;
+		item[6] = json.games[i].stats.item6;
+
+		//Create img for items
+		for (j = 0; j < 7; j++){
+
+			if (item[j] == null){
+				item[j] = 0;
+			}
+
+			img = document.createElement("img");
+			img.src = "img/items/"+ item[j] +".png";
+			img.setAttribute("id", "item" + i + "" + j);
+			src = document.getElementById("game" + i);
+			src.appendChild(img);
+
+			img.style.width = "40px";
+		}
+
+		//Changing style of items
+		for (j = 0; j < 3; j++){
+			x = document.getElementById("item" + i +""+ j);
+			x.style.position = "relative";
+			x.style.bottom = "50px";
+		}
+
+		for (j = 3; j < 6; j++){
+			y = document.getElementById("item" + i +""+ j);
+			y.style.position = "relative"
+			y.style.right = "150px";
+		}
+
+		z = document.getElementById("item" + i +""+ 6);
+		z.style.position = "relative"
+		z.style.right = "150px";
+		z.style.bottom = "25px";
 
 	}
 
