@@ -147,6 +147,7 @@ function gotRecentGames(data){
 	var item = [];
 	var keystone;
 	var win, time, min, sec;
+	var gold, cs, damageDealt, largestMK, wardsKilled, wardsPlaced;
 
 	for (i = 0; i < json.games.length; i++){
 		gametype = json.games[i].subType;
@@ -330,6 +331,13 @@ function gotRecentGames(data){
 		z.style.position = "relative"
 		z.style.right = "150px";
 		z.style.bottom = "25px";
+
+		gold = json.games[i].stats.goldEarned;
+		cs = json.games[i].stats.minionsKilled;
+		damageDealt = json.games[i].stats.totalDamageDealt;
+		largestMK = json.games[i].stats.largestMultiKill;
+		wardsKilled = json.games[i].stats.wardKilled;
+		wardsPlaced = json.games[i].stats.wardPlaced;
 
 	}
 
