@@ -322,16 +322,15 @@ function gotRecentGames(data){
 
 		for (j = 3; j < 6; j++){
 			y = document.getElementById("item" + i +""+ j);
-			y.style.position = "relative";
+			y.style.position = "relative"
 			y.style.right = "150px";
 		}
 
 		z = document.getElementById("item" + i +""+ 6);
-		z.style.position = "relative";
+		z.style.position = "relative"
 		z.style.right = "150px";
 		z.style.bottom = "25px";
 
-		
 	}
 
 }
