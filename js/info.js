@@ -336,19 +336,16 @@ function gotRecentGames(data){
 		cs = json.games[i].stats.minionsKilled;
 		damageDealt = json.games[i].stats.totalDamageDealt;
 		largestMK = json.games[i].stats.largestMultiKill;
+		wardsKilled = json.games[i].stats.wardKilled;
+		wardsPlaced = json.games[i].stats.wardPlaced;
 
-		if (wardsKilled == "undefined"){
+		//Checking for undefined numbers
+		if (typeof wardsKilled == "undefined"){
 			wardsKilled = 0;
-		} else {
-			wardsKilled = json.games[i].stats.wardKilled;
 		}
-
-		if (wardsPlaced == "undefined"){
+		if (typeof wardsPlaced == "undefined"){
 			wardsPlaced = 0;
-		} else {
-			wardsPlaced = json.games[i].stats.wardPlaced;
 		}
-
 
 		/*
 		    Stats
@@ -360,11 +357,9 @@ function gotRecentGames(data){
 		p.innerHTML = "Gold: " + gold + "<br/>Minions Killed:" + cs + "<br/>Damage Dealt: " + damageDealt + "<br/>Largest Kill Streak: " + largestMK + "<br/>Wards Killed: " + wardsKilled + "<br/>Wards Placed: " + wardsPlaced;
 
 		//Changing the style of the p tag
-
-		p.style.position = "absolute";
-		p.style.right = "125px";
-		p.style.top = (30 + (i * 150)) + "px";
-		p.style.display = "inline-block";
+		p.style.position = "relative";
+		p.style.left = "600px";
+		p.style.bottom = "150px";
 		p.style.fontSize = "15px";
 	}
 

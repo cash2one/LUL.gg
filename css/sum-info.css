@@ -91,6 +91,7 @@ body{
   display:block;
   height: 80%;
   overflow-y:scroll;
+  overflow-x: hidden;
 }
 
 #history{
