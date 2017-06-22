@@ -278,9 +278,9 @@ function gotRecentGames(data){
 		src.appendChild(p);
 
 		if (win){
-			p.innerHTML = "Victory <br/>" + min + "m" + " " + sec + "s";
+			p.innerHTML = "Victory <br/>" + min + "m " + sec + "s";
 		} else {
-			p.innerHTML = "Defeat <br/>" + min + "m" + " " + sec + "s";
+			p.innerHTML = "Defeat <br/>" + min + "m " + sec + "s";
 		}
 
 		//Changing the style of the p tag
@@ -323,12 +323,12 @@ function gotRecentGames(data){
 
 		for (j = 3; j < 6; j++){
 			y = document.getElementById("item" + i +""+ j);
-			y.style.position = "relative"
+			y.style.position = "relative";
 			y.style.right = "150px";
 		}
 
 		z = document.getElementById("item" + i +""+ 6);
-		z.style.position = "relative"
+		z.style.position = "relative";
 		z.style.right = "150px";
 		z.style.bottom = "25px";
 
@@ -336,9 +336,36 @@ function gotRecentGames(data){
 		cs = json.games[i].stats.minionsKilled;
 		damageDealt = json.games[i].stats.totalDamageDealt;
 		largestMK = json.games[i].stats.largestMultiKill;
-		wardsKilled = json.games[i].stats.wardKilled;
-		wardsPlaced = json.games[i].stats.wardPlaced;
 
+		if (wardsKilled == "undefined"){
+			wardsKilled = 0;
+		} else {
+			wardsKilled = json.games[i].stats.wardKilled;
+		}
+
+		if (wardsPlaced == "undefined"){
+			wardsPlaced = 0;
+		} else {
+			wardsPlaced = json.games[i].stats.wardPlaced;
+		}
+
+
+		/*
+		    Stats
+								*/
+		p = document.createElement("p");
+		src = document.getElementById("game" + i);
+		src.appendChild(p);
+
+		p.innerHTML = "Gold: " + gold + "<br/>Minions Killed:" + cs + "<br/>Damage Dealt: " + damageDealt + "<br/>Largest Kill Streak: " + largestMK + "<br/>Wards Killed: " + wardsKilled + "<br/>Wards Placed: " + wardsPlaced;
+
+		//Changing the style of the p tag
+
+		p.style.position = "absolute";
+		p.style.right = "125px";
+		p.style.top = (30 + (i * 150)) + "px";
+		p.style.display = "inline-block";
+		p.style.fontSize = "15px";
 	}
 
 }
