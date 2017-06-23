@@ -127,7 +127,7 @@ body{
   padding-left: 10px;
 }
 
-#game-stats{
+#not-in-game{
   width: 825px;
   height: 200px;
   background-image: url("../img/etc/banner.jpg");
@@ -136,8 +136,15 @@ body{
   display: none;
 }
 
-#game-stats p{
+#not-in-game p{
   font-size: 20px;
   color: #000;
   text-align: center;
+}
+
+#in-game{
+  width: 825px;
+  height: 200px;
+  background-color: #FFF;
+  display: none;
 }
