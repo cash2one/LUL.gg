@@ -148,3 +148,20 @@ body{
   background-color: #FFF;
   display: none;
 }
+
+#in-game ul li{
+  color: #000;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.team1{
+  list-style: none;
+  float: left;
+}
+
+.team2{
+  padding-right: 25px;
+  list-style: none;
+  float: right;
+}

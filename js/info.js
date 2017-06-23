@@ -398,7 +398,6 @@ function getLiveGame(){
 
 function gotLiveGame(data){
 	var json = JSON.parse(data);
-
 }
 
 //Checks for null variables and returns a 0
