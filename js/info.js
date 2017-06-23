@@ -365,6 +365,35 @@ function gotRecentGames(data){
 
 }
 
+// Makes call to the spectator v3 api
+function getLiveGame(){
+	var liveGameURL = "https://na1.api.riotgames.com/lol/spectator/v3/active-games/by-summoner/" + id + "?api_key=" + key;
+
+	// Make a request to the api
+	var xobj = new XMLHttpRequest();
+			xobj.overrideMimeType("application/json");
+	xobj.open('GET', liveGameURL, false); // <- setting to false is deprecated (using until a solution is found)
+	xobj.onreadystatechange = function () {
+				if (xobj.readyState == 4 && xobj.status == "200") {
+					// Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+					callback(xobj.responseText);
+				}
+	};
+	xobj.send(null);
+
+	//If the user is not in a game the api will respond with a 404 error
+	if (xobj.status == 404){ // Display the message saying the user is not in game
+
+  } else { // Load the game data
+        loadJSON(liveGameURL, gotLiveGame);
+	}
+}
+
+function gotLiveGame(data){
+	var json = JSON.parse(data);
+
+}
+
 //Checks for null variables and returns a 0
 function checkUndefined(varToCheck){
   if (varToCheck == null){
