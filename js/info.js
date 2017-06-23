@@ -398,6 +398,32 @@ function getLiveGame(){
 
 function gotLiveGame(data){
 	var json = JSON.parse(data);
+	var team1 = [];
+	var team2 = [];
+	var champions = [];
+	var teamNum, name;
+	var x,y ;
+
+	for (i = 0; i < 10; i ++){
+		//Sort the summoners in the game by team
+		name = json.participants[i].summonerName;
+		teamNum = json.participants[i].teamId;
+
+		if (teamNum == 100){ // First team
+			team1.push(name); // Append list
+		} else { // Second team
+			team2.push(name);
+		}
+	}
+
+	//Adding the summoner names to the HTML
+	for (i = 0; i < 5; i++){
+		x = document.getElementById("summoner" + i);
+		y = document.getElementById("summoner" + (i+5));
+
+		x.innerHTML = team1[i];
+		y.innerHTML = team2[i];
+	}
 }
 
 //Checks for null variables and returns a 0
