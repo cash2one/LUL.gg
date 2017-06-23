@@ -381,11 +381,15 @@ function getLiveGame(){
 	};
 	xobj.send(null);
 
+	var x;
+	x = document.getElementById("game-stats");
+
 	//If the user is not in a game the api will respond with a 404 error
 	if (xobj.status == 404){ // Display the message saying the user is not in game
-
+		x.style.display = "block";		
   } else { // Load the game data
-        loadJSON(liveGameURL, gotLiveGame);
+		x.style.display = "none";
+    loadJSON(liveGameURL, gotLiveGame);
 	}
 }
 

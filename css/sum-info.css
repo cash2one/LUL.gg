@@ -126,3 +126,18 @@ body{
   width: 90px;
   padding-left: 10px;
 }
+
+#game-stats{
+  width: 825px;
+  height: 200px;
+  background-image: url("../img/etc/banner.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+  display: none;
+}
+
+#game-stats p{
+  font-size: 20px;
+  color: #000;
+  text-align: center;
+}
