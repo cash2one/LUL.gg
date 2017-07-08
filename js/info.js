@@ -2,7 +2,7 @@
 var summoner;
 var id;
 var icon;
-var key = 'RGAPI-795e904f-77c3-4914-968d-16794eb87d4f';
+var key = 'RGAPI-ec35f6f1-f86b-4e0f-adf9-284dc191bea0';
 var indexOfChamp = []; //indexes corresponding to the number of games played
 
 // Reads the data from the form
